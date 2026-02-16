@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carmesí - 3 Años</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('imagenes/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ff3b3b, #ff0000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #ff5555;
+        }
+        
+        .hero .date {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ff5555;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .hero .location {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #ddd;
+        }
+        
+        /* Secciones generales */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            color: #ff5555;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #ff3b3b, #ff0000);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Cartel de agradecimiento */
+        .agradecimiento-banner {
+            background: linear-gradient(to right, #ff3b3b, #ff0000);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .agradecimiento-banner i {
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Sección artistas (sin título) */
+        .artistas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .artista-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .artista-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .artista-img {
+            height: 200px;
+            background-color: #222;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .artista-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .artista-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #ff5555;
+        }
+        
+        .artista-style {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+        
+        .artista-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .artista-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .artista-link:hover {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            transform: translateY(-3px);
+        }
+        
+        .artista-link i {
+            margin-right: 5px;
+        }
+        
+        /* Sección de galería multimedia */
+        .multimedia-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .multimedia-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .multimedia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .multimedia-icon {
+            font-size: 60px;
+            color: #ff5555;
+            margin-bottom: 20px;
+        }
+        
+        .multimedia-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ff5555;
+        }
+        
+        .multimedia-desc {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .multimedia-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff3b3b, #ff0000);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin: 5px;
+        }
+        
+        .multimedia-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        .multimedia-btn i {
+            margin-right: 8px;
+        }
+        
+        /* Información de la academia */
+        .academia-info {
+            background: linear-gradient(135deg, #ff3b3b, #ff0000);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .academia-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .academia-info p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .academia-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .academia-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: white;
+            color: #ff0000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .academia-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .academia-btn i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* Sección fotógrafo Carlos Machuca */
+        .fotografo-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .fotografo-img {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            height: 300px;
+            background-color: #222;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .fotografo-info {
+            flex: 1;
+            min-width: 250px;
+            max-width: 500px;
+        }
+        
+        .fotografo-info h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ff5555;
+        }
+        
+        .fotografo-info .subtitulo {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #ff3b3b;
+            font-weight: 600;
+        }
+        
+        .fotografo-info p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        /* Botón WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            z-index: 100;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #050505;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .event-name {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ff5555;
+            font-weight: 600;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero h2 { font-size: 1.8rem; }
+            .hero .date { font-size: 1.5rem; }
+            .agradecimiento-banner { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/543705084498?text=Hola%20%2C%20me%20interesan%20las%20clases%20%2C%20busco%20informacion" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>CARMESÍ</h1>
+            <h2>3 AÑOS ❤️‍🔥</h2>
+            <div class="date">SÁBADO 14 DE FEBRERO</div>
+            <div class="location">Brandsen 774 – Instituto de Informaciones Comerciales</div>
+        </div>
+    </section>
+
+    <!-- Cartel de agradecimiento - INICIO -->
+    <div class="container" style="margin-top: 30px;">
+        <div class="agradecimiento-banner">
+            <i class="fas fa-heart"></i>
+            ¡CELEBRAMOS 3 AÑOS DE CARMESÍ! ¡NO TE LO PIERDAS! 
+            <i class="fas fa-heart"></i>
+        </div>
+    </div>
+
+    <!-- Información de la Academia -->
+    <section id="academia">
+        <div class="container">
+            <div class="academia-info">
+                <h3><i class="fas fa-map-pin"></i> Nuestra Academia</h3>
+                <p><strong>Carmesí - Pringles 321</strong></p>
+                <p>Formosa Capital, Argentina</p>
+                <div class="academia-buttons">
+                    <a href="https://wa.me/543705084498?text=Hola%20%2C%20me%20interesan%20las%20clases%20%2C%20busco%20informacion" target="_blank" class="academia-btn">
+                        <i class="fab fa-whatsapp"></i> Únete a nuestras clases regulares
+                    </a>
+                    <a href="https://maps.google.com/?q=Pringles+321+Formosa+Capital" target="_blank" class="academia-btn">
+                        <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección artistas/invitados (sin título) -->
+    <section id="artistas">
+        <div class="container">
+            <div class="artistas-container" id="artistas-container">
+                <!-- Artistas generados dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de galería multimedia -->
+    <section id="multimedia">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería Carmesí</h2>
+            </div>
+            
+            <div class="multimedia-container">
+                <!-- Fotos -->
+                <div class="multimedia-card">
+                    <div class="multimedia-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3 class="multimedia-title">Fotos</h3>
+                    <p class="multimedia-desc">
+                        Todas las imágenes de nuestros eventos y clases
+                    </p>
+                    <a href="https://photos.app.goo.gl/ejemplo-fotos" target="_blank" class="multimedia-btn">
+                        <i class="fas fa-images"></i> Ver Fotos
+                    </a>
+                </div>
+                
+                <!-- Videos Sociales -->
+                <div class="multimedia-card">
+                    <div class="multimedia-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="multimedia-title">Videos Sociales</h3>
+                    <p class="multimedia-desc">
+                        Momentos de nuestras social dances y encuentros
+                    </p>
+                    <a href="https://photos.app.goo.gl/ejemplo-videos-sociales" target="_blank" class="multimedia-btn">
+                        <i class="fas fa-play-circle"></i> Ver Videos
+                    </a>
+                </div>
+                
+                <!-- Competencia -->
+                <div class="multimedia-card">
+                    <div class="multimedia-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="multimedia-title">Competencia</h3>
+                    <p class="multimedia-desc">
+                        Todas las competencias y battles de Carmesí
+                    </p>
+                    <a href="https://photos.app.goo.gl/ejemplo-competencia" target="_blank" class="multimedia-btn">
+                        <i class="fas fa-star"></i> Ver Competencias
+                    </a>
+                </div>
+                
+                <!-- Coreografías -->
+                <div class="multimedia-card">
+                    <div class="multimedia-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="multimedia-title">Coreografías</h3>
+                    <p class="multimedia-desc">
+                        Presentaciones y coreografías de nuestros alumnos
+                    </p>
+                    <a href="https://photos.app.goo.gl/ejemplo-coreografias" target="_blank" class="multimedia-btn">
+                        <i class="fas fa-music"></i> Ver Coreografías
+                    </a>
+                </div>
+                
+                <!-- Recaps -->
+                <div class="multimedia-card">
+                    <div class="multimedia-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="multimedia-title">Recaps</h3>
+                    <p class="multimedia-desc">
+                        Los mejores momentos resumidos en videos
+                    </p>
+                    <a href="https://photos.app.goo.gl/ejemplo-recaps" target="_blank" class="multimedia-btn">
+                        <i class="fas fa-clapperboard"></i> Ver Recaps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección fotógrafo Carlos Machuca -->
+    <section id="fotografo">
+        <div class="container">
+            <div class="fotografo-container">
+                <div class="fotografo-img" style="background-image: url('imagenes/carlos.jpg');">
+                    <!-- Sin icono para que se vea la imagen completa -->
+                </div>
+                <div class="fotografo-info">
+                    <h3>Carlos Machuca</h3>
+                    <div class="subtitulo">Fotógrafo y Filmaker</div>
+                    <p>Carlos Machuca, el encargado de capturar los mejores momentos, te invita a festejar nuestros tres años este sábado.</p>
+                    <p>¡Ponete lindo/a! Carlos se encargará de tomar imágenes increíbles para un recuerdo inolvidable 😊</p>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="https://www.instagram.com/carlosmachucafotografia/" target="_blank" style="background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://wa.me/5491167137742?text=Hola%20Carlos%2C%20quiero%20contactarte%20para%20una%20sesión%20fotográfica" target="_blank" style="background-color: #25D366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                            <i class="fab fa-whatsapp"></i> Contactar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cartel de agradecimiento - FINAL -->
+    <div class="container" style="margin-bottom: 50px;">
+        <div class="agradecimiento-banner">
+            <i class="fas fa-heart"></i>
+            ¡GRACIAS POR SER PARTE DE ESTOS 3 AÑOS DE CARMESÍ! 
+            <i class="fas fa-heart"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="event-name">CARMESÍ - 3 AÑOS</div>
+            <p>Sábado 14 de Febrero - Brandsen 774</p>
+            <p>Academia: Pringles 321 - Formosa Capital</p>
+            <div class="copyright">
+                <p>Página creada por Carlos Machuca Fotografía - Derechos reservados 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Datos de los artistas/invitados con sus links de Instagram actualizados
+        const artistas = [
+            { 
+                nombre: "DAVID GAMBETTA", 
+                estilo: "CAMPEÓN MUNDIAL DE BACHATA - INVITADO EXCLUSIVO",
+                mensaje: "El campeón mundial te espera para una noche única",
+                instagram: "https://www.instagram.com/deividgambetta/"
+            },
+            { 
+                nombre: "ULICES PICO", 
+                estilo: "LOCUTOR INVITADO",
+                mensaje: "Te cuenta TODO lo que se viene en nuestra Fiesta Aniversario",
+                instagram: "https://www.instagram.com/picoulices/"
+            },
+            { 
+                nombre: "SANTI AGUILERA", 
+                estilo: "DJ INVITADO DE LUJO",
+                mensaje: "Listo para musicalizar una noche inolvidable",
+                instagram: "https://www.instagram.com/santi_aguilera_/"
+            },
+            { 
+                nombre: "CHARO PAREDES", 
+                estilo: "ANFITRIONA",
+                mensaje: "Te espera para celebrar esta noche tan especial",
+                instagram: "https://www.instagram.com/direct/t/17845793204928294/"
+            }
+        ];
+        
+        // Generar artistas
+        function cargarArtistas() {
+            const artistasContainer = document.getElementById('artistas-container');
+            
+            artistas.forEach((artista, index) => {
+                const artistaCard = document.createElement('div');
+                artistaCard.className = 'artista-card';
+                
+                artistaCard.innerHTML = `
+                    <div class="artista-img" style="background-image: url('imagenes/${index + 1}.jpg');">
+                        <!-- Sin icono para que se vea la imagen completa -->
+                    </div>
+                    <div class="artista-info">
+                        <h3 class="artista-name">${artista.nombre}</h3>
+                        <p class="artista-style">${artista.estilo}</p>
+                        <p style="color: #ffaaaa; margin-bottom: 15px; font-size: 0.9rem;">${artista.mensaje}</p>
+                        <div class="artista-links">
+                            <a href="${artista.instagram}" target="_blank" class="artista-link"><i class="fab fa-instagram"></i> Instagram</a>
+                        </div>
+                    </div>
+                `;
+                
+                artistasContainer.appendChild(artistaCard);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarArtistas();
+        });
+    </script>
+</body>
+</html>
